@@ -1,8 +1,8 @@
 
-mjlife.se
+mkdevops.se
 =========
 
-Provisioning of mjlife.se WordPress site.
+Provisioning of mkdevops.se WordPress site.
 
 
 Dev Environment
