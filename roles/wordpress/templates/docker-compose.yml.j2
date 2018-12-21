@@ -2,39 +2,39 @@
 
 version: '3.7'
 services:
-  mjlife_db:
+  www_mkdevops_db:
     image: mysql:5.7
-    container_name: mjlife_db
+    container_name: www_mkdevops_db
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=wordpress
     volumes:
-      - mjlife_db:/var/lib/mysql
+      - www_mkdevops_db:/var/lib/mysql
     networks:
-      - mjlife
+      - www_mkdevops
     restart: unless-stopped
 
-  mjlife_wordpress:
+  www_mkdevops_wordpress:
     image: mblomdahl/wordpress
-    container_name: mjlife_wordpress
+    container_name: www_mkdevops_wordpress
     environment:
-      - WORDPRESS_DB_HOST=mjlife_db:3306
+      - WORDPRESS_DB_HOST=www_mkdevops_db:3306
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
     networks:
-      - mjlife
+      - www_mkdevops
     links:
-      - mjlife_db
+      - www_mkdevops_db
     ports:
       - {{ local_port }}:80
     restart: unless-stopped
 
 volumes:
-  mjlife_db:
+  www_mkdevops_db:
 
 networks:
-  mjlife:
+  www_mkdevops:
 
 ...
